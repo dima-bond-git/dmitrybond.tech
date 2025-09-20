@@ -1,0 +1,30 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    background-color: #F8F8F8;
+    color: #001111;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-primary hover:bg-opacity-90 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-brand-accent hover:bg-opacity-80 text-brand-text font-medium py-2 px-4 rounded-lg transition-all duration-200;
+  }
+  
+  .lang-switch {
+    @apply text-brand-primary hover:text-opacity-80 font-medium transition-colors duration-200;
+  }
+}
+

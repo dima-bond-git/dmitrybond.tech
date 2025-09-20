@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "about": "About",
+    "bookme": "Book Me",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies"
+  },
+  "home": {
+    "title": "Dmitry Bond",
+    "subtitle": "Full-Stack Developer & Technical Consultant",
+    "description": "I help businesses build robust, scalable web applications and provide technical consulting services.",
+    "cta": "Schedule a Call"
+  },
+  "about": {
+    "title": "About Me",
+    "content": "I'm a passionate full-stack developer with expertise in modern web technologies, cloud infrastructure, and system architecture. With years of experience in building scalable applications, I help businesses transform their ideas into reality through technology.",
+    "skills": "Technologies & Skills",
+    "experience": "Experience & Expertise"
+  },
+  "bookme": {
+    "title": "Schedule a Meeting",
+    "description": "Choose a convenient time for our consultation. I'm available for technical discussions, project planning, and collaboration opportunities.",
+    "embed_title": "Select Available Time"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: December 2024",
+    "content": "This privacy policy explains how we collect, use, and protect your personal information in accordance with GDPR regulations."
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "last_updated": "Last updated: December 2024",
+    "content": "These terms govern your use of our services and website."
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "last_updated": "Last updated: December 2024",
+    "content": "We use cookies to enhance your browsing experience and analyze website traffic."
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "contact": "Contact"
+  },
+  "cookies": {
+    "banner": {
+      "message": "We use cookies to enhance your experience and analyze website traffic.",
+      "accept_all": "Accept All",
+      "reject_all": "Reject All",
+      "customize": "Customize",
+      "learn_more": "Learn more"
+    },
+    "modal": {
+      "title": "Cookie Preferences",
+      "essential": "Essential Cookies",
+      "essential_desc": "Required for the website to function properly",
+      "analytics": "Analytics Cookies",
+      "analytics_desc": "Help us understand how visitors interact with our website",
+      "marketing": "Marketing Cookies",
+      "marketing_desc": "Used to deliver relevant advertisements",
+      "save": "Save Preferences",
+      "accept_all": "Accept All"
+    }
+  }
+}
+

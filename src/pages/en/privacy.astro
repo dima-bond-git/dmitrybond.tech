@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/en/privacy';
+const locale = 'en';
+---
+
+<Layout title="Privacy Policy - Dmitry Bond" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-8">
+        Privacy Policy
+      </h1>
+      <p class="text-brand-text opacity-70 mb-12">
+        Last updated: December 2024
+      </p>
+      
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">1. Introduction</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          This Privacy Policy explains how Dmitry Bond ("we", "our", or "us") collects, uses, 
+          and protects your personal information when you visit our website dmitrybond.tech 
+          (the "Service") in accordance with the General Data Protection Regulation (GDPR).
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">2. Information We Collect</h2>
+        <h3 class="text-xl font-medium text-brand-text mb-4">2.1 Personal Information</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          We may collect personal information that you voluntarily provide to us, including:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>Name and contact information (email address, phone number)</li>
+          <li>Professional information (company, job title)</li>
+          <li>Communication preferences</li>
+          <li>Any other information you choose to provide</li>
+        </ul>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">2.2 Automatically Collected Information</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          We automatically collect certain information when you visit our website:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>IP address and browser information</li>
+          <li>Pages visited and time spent on our site</li>
+          <li>Referring website information</li>
+          <li>Device and operating system information</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">3. How We Use Your Information</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          We use the collected information for the following purposes:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>To provide and maintain our services</li>
+          <li>To respond to your inquiries and provide customer support</li>
+          <li>To schedule and conduct meetings and consultations</li>
+          <li>To improve our website and services</li>
+          <li>To comply with legal obligations</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">4. Legal Basis for Processing (GDPR)</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Under GDPR, we process your personal data based on the following legal grounds:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li><strong>Consent:</strong> When you voluntarily provide information</li>
+          <li><strong>Contract:</strong> To fulfill our contractual obligations</li>
+          <li><strong>Legitimate Interest:</strong> To improve our services and website</li>
+          <li><strong>Legal Obligation:</strong> To comply with applicable laws</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">5. Data Sharing and Disclosure</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We do not sell, trade, or rent your personal information to third parties. We may share 
+          your information only in the following circumstances:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>With your explicit consent</li>
+          <li>To comply with legal requirements</li>
+          <li>To protect our rights and prevent fraud</li>
+          <li>With trusted service providers who assist in our operations</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">6. Data Security</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We implement appropriate technical and organizational measures to protect your personal 
+          information against unauthorized access, alteration, disclosure, or destruction. However, 
+          no method of transmission over the Internet is 100% secure.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">7. Your Rights (GDPR)</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Under GDPR, you have the following rights regarding your personal data:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li><strong>Right of Access:</strong> Request copies of your personal data</li>
+          <li><strong>Right to Rectification:</strong> Request correction of inaccurate data</li>
+          <li><strong>Right to Erasure:</strong> Request deletion of your personal data</li>
+          <li><strong>Right to Restrict Processing:</strong> Request limitation of data processing</li>
+          <li><strong>Right to Data Portability:</strong> Request transfer of your data</li>
+          <li><strong>Right to Object:</strong> Object to processing based on legitimate interests</li>
+          <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">8. Cookies</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Our website uses cookies to enhance your browsing experience. You can control cookie 
+          preferences through our cookie consent banner. For detailed information, please see 
+          our <a href="/en/cookies" class="text-brand-primary hover:underline">Cookie Policy</a>.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">9. Data Retention</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We retain your personal information only as long as necessary to fulfill the purposes 
+          outlined in this Privacy Policy, unless a longer retention period is required by law.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">10. International Data Transfers</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Your information may be transferred to and processed in countries other than your own. 
+          We ensure appropriate safeguards are in place to protect your data in accordance with GDPR.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">11. Changes to This Privacy Policy</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We may update this Privacy Policy from time to time. We will notify you of any changes 
+          by posting the new Privacy Policy on this page and updating the "Last updated" date.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">12. Contact Information</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          If you have any questions about this Privacy Policy or wish to exercise your rights, 
+          please contact us at:
+        </p>
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <p class="text-brand-text opacity-80">
+            <strong>Email:</strong> privacy@dmitrybond.tech<br>
+            <strong>Website:</strong> dmitrybond.tech<br>
+            <strong>Response Time:</strong> We will respond to your inquiry within 30 days
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

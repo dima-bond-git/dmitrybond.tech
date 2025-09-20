@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/ru/about';
+const locale = 'ru';
+---
+
+<Layout title="Обо мне - Дмитрий Бонд" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <!-- Hero Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-8">
+        Обо мне
+      </h1>
+      <p class="text-xl text-brand-text opacity-80 leading-relaxed">
+        Я увлеченный full-stack разработчик с экспертизой в современных веб-технологиях, 
+        облачной инфраструктуре и архитектуре систем. С многолетним опытом создания 
+        масштабируемых приложений, я помогаю бизнесу воплощать идеи в жизнь через технологии.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">Мой путь</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          С более чем десятилетним опытом в разработке программного обеспечения, мне посчастливилось 
+          работать с разнообразными командами и технологиями. Мой путь начался с любопытства о том, 
+          как все устроено, и превратился в страсть к созданию решений, которые приносят реальную пользу.
+        </p>
+        <p class="text-brand-text opacity-80 mb-6">
+          Я специализируюсь на full-stack разработке с использованием современных фреймворков, таких как 
+          React, Node.js и TypeScript. Мой опыт варьируется от создания сайтов для малого бизнеса до 
+          проектирования корпоративных приложений, обслуживающих миллионы пользователей.
+        </p>
+        <p class="text-brand-text opacity-80">
+          Когда я не пишу код, мне нравится изучать новые технологии, вносить вклад в проекты с открытым 
+          исходным кодом и делиться знаниями с сообществом разработчиков. Я верю в непрерывное обучение 
+          и слежу за последними тенденциями и лучшими практиками в индустрии.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8">Технологии и навыки</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Frontend разработка</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• React, Next.js, Vue.js</li>
+            <li>• TypeScript, JavaScript (ES6+)</li>
+            <li>• Tailwind CSS, Styled Components</li>
+            <li>• Webpack, Vite, Astro</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Backend разработка</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• Node.js, Express, Fastify</li>
+            <li>• Python, Django, FastAPI</li>
+            <li>• PostgreSQL, MongoDB, Redis</li>
+            <li>• GraphQL, REST API</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Облако и DevOps</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• AWS, Google Cloud, Azure</li>
+            <li>• Docker, Kubernetes</li>
+            <li>• Terraform, Ansible</li>
+            <li>• CI/CD, GitHub Actions</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Инструменты и практики</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• Git, GitHub, GitLab</li>
+            <li>• Тестирование (Jest, Cypress)</li>
+            <li>• Agile, Scrum методологии</li>
+            <li>• Code review, менторство</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8">Опыт и экспертиза</h2>
+      
+      <div class="space-y-8">
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Full-Stack разработка</h3>
+          <p class="text-brand-text opacity-80">
+            Создание полноценных веб-приложений с использованием современных фреймворков и лучших практик. 
+            От проектирования базы данных до реализации пользовательского интерфейса.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Техническая архитектура</h3>
+          <p class="text-brand-text opacity-80">
+            Проектирование масштабируемых, поддерживаемых систем, которые могут расти вместе с вашим бизнесом. 
+            Принятие обоснованных технологических решений и стратегий реализации.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Управление командой</h3>
+          <p class="text-brand-text opacity-80">
+            Руководство командами разработчиков, менторство младших разработчиков и создание 
+            совместных сред, которые способствуют инновациям и качеству.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Управление проектами</h3>
+          <p class="text-brand-text opacity-80">
+            Управление сложными проектами от концепции до развертывания, обеспечение своевременной 
+            поставки при поддержании высоких стандартов качества кода и пользовательского опыта.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-semibold text-brand-text mb-6">
+        Давайте работать вместе
+      </h2>
+      <p class="text-lg text-brand-text opacity-80 mb-8">
+        Я всегда заинтересован в новых возможностях и сложных проектах. 
+        Давайте обсудим, как я могу помочь воплотить ваши идеи в жизнь.
+      </p>
+      <a href="/ru/bookme" class="btn-primary text-lg px-8 py-4">
+        Записаться на консультацию
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/ru/bookme';
+const locale = 'ru';
+---
+
+<Layout title="Записаться на встречу - Дмитрий Бонд" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <!-- Hero Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-6">
+        Записаться на встречу
+      </h1>
+      <p class="text-xl text-brand-text opacity-80 mb-8 max-w-2xl mx-auto">
+        Выберите удобное время для нашей консультации. Я доступен для технических обсуждений, 
+        планирования проектов и возможностей сотрудничества.
+      </p>
+    </div>
+  </section>
+
+  <!-- Cal.com Embed Section -->
+  <section class="py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6 text-center">
+          Выберите доступное время
+        </h2>
+        
+        <!-- Cal.com Embed -->
+        <div id="cal-embed" class="min-h-[600px]">
+          <!-- Cal.com embed will be loaded here -->
+          <div class="flex items-center justify-center h-96">
+            <div class="text-center">
+              <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary mx-auto mb-4"></div>
+              <p class="text-brand-text opacity-70">Загрузка календаря...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meeting Info Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8 text-center">
+        Что ожидать
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-2">30-60 минут</h3>
+          <p class="text-brand-text opacity-70">
+            Гибкая продолжительность встречи в зависимости от ваших потребностей и сложности проекта.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-2">Бесплатная консультация</h3>
+          <p class="text-brand-text opacity-70">
+            Первичная консультация бесплатна для обсуждения вашего проекта и изучения возможностей сотрудничества.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-medium text-brand-text mb-2">Видеозвонок</h3>
+          <p class="text-brand-text opacity-70">
+            Встречи проводятся через Google Meet, Zoom или вашу предпочитаемую платформу.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8 text-center">
+        Темы для обсуждения
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-medium text-brand-text mb-3">Планирование проекта</h3>
+          <ul class="space-y-2 text-brand-text opacity-70 text-sm">
+            <li>• Анализ технических требований</li>
+            <li>• Архитектура и технологический стек</li>
+            <li>• Планирование сроков и ресурсов</li>
+            <li>• Оценка бюджета</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-medium text-brand-text mb-3">Услуги разработки</h3>
+          <ul class="space-y-2 text-brand-text opacity-70 text-sm">
+            <li>• Разработка полноценных приложений</li>
+            <li>• Проектирование и реализация API</li>
+            <li>• Проектирование и оптимизация баз данных</li>
+            <li>• Интеграция со сторонними сервисами</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-medium text-brand-text mb-3">Техническое консультирование</h3>
+          <ul class="space-y-2 text-brand-text opacity-70 text-sm">
+            <li>• Code review и оптимизация</li>
+            <li>• Улучшение производительности</li>
+            <li>• Лучшие практики безопасности</li>
+            <li>• DevOps и стратегии развертывания</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+          <h3 class="text-lg font-medium text-brand-text mb-3">Командное сотрудничество</h3>
+          <ul class="space-y-2 text-brand-text opacity-70 text-sm">
+            <li>• Менторство разработчиков</li>
+            <li>• Расширение команды</li>
+            <li>• Улучшение процессов</li>
+            <li>• Передача знаний</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<!-- Cal.com Embed Script -->
+<script>
+  (function (C, A, L) { 
+    let p = function (a, ar) { 
+      a.q.push(ar); 
+    }; 
+    let d = C.document; 
+    C.Cal = C.Cal || function () { 
+      let cal = C.Cal; 
+      let ar = arguments; 
+      if (!cal.loaded) { 
+        cal.ns = {}; 
+        cal.q = cal.q || []; 
+        d.head.appendChild(d.createElement("script")).src = A; 
+        cal.loaded = true; 
+      } 
+      if (ar[0] === L) { 
+        const api = function () { 
+          p(api, arguments); 
+        }; 
+        const namespace = ar[1]; 
+        api.q = api.q || []; 
+        typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); 
+        return; 
+      } 
+      p(cal, ar); 
+    }; 
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+  
+  Cal("init", "dmitrybond/ru");
+  
+  Cal("ui", {
+    "styles": {
+      "branding": {
+        "brandColor": "#E6974D"
+      }
+    },
+    "hideEventTypeDetails": false,
+    "layout": "month_view"
+  });
+</script>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

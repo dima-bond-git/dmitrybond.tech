@@ -1,0 +1,30 @@
+---
+export interface Props {
+  currentLocale: string;
+  currentPath: string;
+}
+
+const { currentLocale, currentPath } = Astro.props;
+
+// Extract the path without locale prefix
+const pathWithoutLocale = currentPath.replace(/^\/(en|ru)/, '');
+const targetLocale = currentLocale === 'en' ? 'ru' : 'en';
+const targetPath = `/${targetLocale}${pathWithoutLocale}`;
+---
+
+<div class="flex items-center space-x-2">
+  <a 
+    href="/en" 
+    class={`lang-switch ${currentLocale === 'en' ? 'font-semibold' : 'opacity-60'}`}
+  >
+    EN
+  </a>
+  <span class="text-brand-text opacity-30">|</span>
+  <a 
+    href="/ru" 
+    class={`lang-switch ${currentLocale === 'ru' ? 'font-semibold' : 'opacity-60'}`}
+  >
+    RU
+  </a>
+</div>
+

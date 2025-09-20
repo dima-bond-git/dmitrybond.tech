@@ -1,0 +1,62 @@
+version: '2.1'
+
+services:
+  # Mailcow main application
+  mailcow:
+    image: mailcow/mailcow:latest
+    container_name: mailcow
+    hostname: mail.dmitrybond.tech
+    restart: always
+    ports:
+      - "25:25"      # SMTP
+      - "465:465"    # SMTPS
+      - "587:587"    # SMTP submission
+      - "993:993"    # IMAPS
+      - "995:995"    # POP3S
+      - "80:80"      # HTTP (for Let's Encrypt)
+      - "443:443"    # HTTPS
+    volumes:
+      - mailcow_data:/var/lib/mailcow
+      - mailcow_logs:/var/log/mailcow
+      - mailcow_ssl:/etc/ssl/mailcow
+    environment:
+      - MAILCOW_HOSTNAME=mail.dmitrybond.tech
+      - TZ=UTC
+    networks:
+      - mailcow
+
+  # PostgreSQL for mailcow
+  mailcow-postgres:
+    image: postgres:13-alpine
+    container_name: mailcow-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: mailcow
+      POSTGRES_USER: mailcow
+      POSTGRES_PASSWORD: mailcow
+    volumes:
+      - mailcow_postgres:/var/lib/postgresql/data
+    networks:
+      - mailcow
+
+  # Redis for mailcow
+  mailcow-redis:
+    image: redis:7-alpine
+    container_name: mailcow-redis
+    restart: always
+    volumes:
+      - mailcow_redis:/data
+    networks:
+      - mailcow
+
+volumes:
+  mailcow_data:
+  mailcow_logs:
+  mailcow_ssl:
+  mailcow_postgres:
+  mailcow_redis:
+
+networks:
+  mailcow:
+    driver: bridge
+

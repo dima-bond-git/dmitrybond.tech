@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/en/about';
+const locale = 'en';
+---
+
+<Layout title="About - Dmitry Bond" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <!-- Hero Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-8">
+        About Me
+      </h1>
+      <p class="text-xl text-brand-text opacity-80 leading-relaxed">
+        I'm a passionate full-stack developer with expertise in modern web technologies, 
+        cloud infrastructure, and system architecture. With years of experience in building 
+        scalable applications, I help businesses transform their ideas into reality through technology.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">My Journey</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          With over a decade of experience in software development, I've had the privilege of working 
+          with diverse teams and technologies. My journey began with curiosity about how things work 
+          and evolved into a passion for creating solutions that make a real difference.
+        </p>
+        <p class="text-brand-text opacity-80 mb-6">
+          I specialize in full-stack development using modern frameworks like React, Node.js, and TypeScript. 
+          My experience spans from building small business websites to architecting enterprise-scale applications 
+          that serve millions of users.
+        </p>
+        <p class="text-brand-text opacity-80">
+          When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, 
+          and sharing knowledge with the developer community. I believe in continuous learning and staying 
+          up-to-date with the latest industry trends and best practices.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8">Technologies & Skills</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Frontend Development</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• React, Next.js, Vue.js</li>
+            <li>• TypeScript, JavaScript (ES6+)</li>
+            <li>• Tailwind CSS, Styled Components</li>
+            <li>• Webpack, Vite, Astro</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Backend Development</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• Node.js, Express, Fastify</li>
+            <li>• Python, Django, FastAPI</li>
+            <li>• PostgreSQL, MongoDB, Redis</li>
+            <li>• GraphQL, REST APIs</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Cloud & DevOps</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• AWS, Google Cloud, Azure</li>
+            <li>• Docker, Kubernetes</li>
+            <li>• Terraform, Ansible</li>
+            <li>• CI/CD, GitHub Actions</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-medium text-brand-text mb-4">Tools & Practices</h3>
+          <ul class="space-y-2 text-brand-text opacity-80">
+            <li>• Git, GitHub, GitLab</li>
+            <li>• Testing (Jest, Cypress)</li>
+            <li>• Agile, Scrum methodologies</li>
+            <li>• Code review, mentoring</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold text-brand-text mb-8">Experience & Expertise</h2>
+      
+      <div class="space-y-8">
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Full-Stack Development</h3>
+          <p class="text-brand-text opacity-80">
+            Building end-to-end web applications with modern frameworks and best practices. 
+            From database design to user interface implementation.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Technical Architecture</h3>
+          <p class="text-brand-text opacity-80">
+            Designing scalable, maintainable systems that can grow with your business. 
+            Making informed technology choices and implementation strategies.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Team Leadership</h3>
+          <p class="text-brand-text opacity-80">
+            Leading development teams, mentoring junior developers, and fostering 
+            collaborative environments that drive innovation and quality.
+          </p>
+        </div>
+        
+        <div class="border-l-4 border-brand-primary pl-6">
+          <h3 class="text-lg font-medium text-brand-text mb-2">Project Management</h3>
+          <p class="text-brand-text opacity-80">
+            Managing complex projects from conception to deployment, ensuring timely delivery 
+            while maintaining high standards of code quality and user experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-semibold text-brand-text mb-6">
+        Let's Work Together
+      </h2>
+      <p class="text-lg text-brand-text opacity-80 mb-8">
+        I'm always interested in new opportunities and challenging projects. 
+        Let's discuss how I can help bring your ideas to life.
+      </p>
+      <a href="/en/bookme" class="btn-primary text-lg px-8 py-4">
+        Schedule a Consultation
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/ru/cookies';
+const locale = 'ru';
+---
+
+<Layout title="Политика использования cookies - Дмитрий Бонд" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-8">
+        Политика использования cookies
+      </h1>
+      <p class="text-brand-text opacity-70 mb-12">
+        Последнее обновление: декабрь 2024
+      </p>
+      
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">1. Что такое cookies</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Cookies - это небольшие текстовые файлы, которые сохраняются на вашем компьютере или мобильном 
+          устройстве при посещении нашего веб-сайта. Они помогают нам предоставить вам лучший опыт, 
+          запоминая ваши предпочтения и понимая, как вы используете наш сайт.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">2. Как мы используем cookies</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Мы используем cookies для улучшения вашего опыта просмотра, анализа трафика веб-сайта и 
+          предоставления персонализированного контента. Мы уважаем вашу конфиденциальность и используем 
+          cookies только с вашего согласия, за исключением необходимых cookies, которые необходимы 
+          для корректной работы веб-сайта.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">3. Типы cookies, которые мы используем</h2>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">3.1 Необходимые cookies</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          Эти cookies необходимы для работы веб-сайта и не могут быть отключены в наших системах. 
+          Они обычно устанавливаются только в ответ на действия, совершенные вами, которые равносильны 
+          запросу услуг, таких как настройка ваших предпочтений конфиденциальности, вход в систему 
+          или заполнение форм.
+        </p>
+        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+          <p class="text-sm text-brand-text opacity-80">
+            <strong>Примеры:</strong> Предпочтения согласия на cookies, токены безопасности, управление сессиями
+          </p>
+        </div>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">3.2 Аналитические cookies</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          Эти cookies позволяют нам подсчитывать посещения и источники трафика, чтобы мы могли 
+          измерять и улучшать производительность нашего сайта. Они помогают нам узнать, какие 
+          страницы наиболее и наименее популярны, и видеть, как посетители перемещаются по сайту.
+        </p>
+        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+          <p class="text-sm text-brand-text opacity-80">
+            <strong>Примеры:</strong> Google Analytics, отслеживание просмотров страниц, анализ поведения пользователей
+          </p>
+        </div>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">3.3 Маркетинговые cookies</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          Эти cookies могут устанавливаться на нашем сайте нашими рекламными партнерами для создания 
+          профиля ваших интересов и показа вам релевантной рекламы на других сайтах. Они не хранят 
+          напрямую персональную информацию, а основаны на уникальной идентификации вашего браузера 
+          и интернет-устройства.
+        </p>
+        <div class="bg-gray-50 p-4 rounded-lg mb-6">
+          <p class="text-sm text-brand-text opacity-80">
+            <strong>Примеры:</strong> Пиксели социальных сетей, рекламные сети, теги ремаркетинга
+          </p>
+        </div>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">4. Продолжительность cookies</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Cookies имеют разную продолжительность жизни:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li><strong>Сессионные cookies:</strong> Удаляются при закрытии браузера</li>
+          <li><strong>Постоянные cookies:</strong> Остаются на вашем устройстве в течение установленного периода или до удаления</li>
+          <li><strong>Cookies согласия:</strong> Хранятся 180 дней (6 месяцев)</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">5. Сторонние cookies</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Наш веб-сайт может содержать сторонние сервисы, которые устанавливают свои собственные cookies:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li><strong>Google Analytics:</strong> Аналитика веб-сайта и мониторинг производительности</li>
+          <li><strong>Cal.com:</strong> Планирование встреч и интеграция с календарем</li>
+          <li><strong>Социальные сети:</strong> Социальный обмен и отслеживание вовлеченности</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">6. Управление настройками cookies</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Вы можете контролировать и управлять cookies несколькими способами:
+        </p>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">6.1 Баннер согласия на cookies</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          При первом посещении нашего веб-сайта вы увидите баннер согласия на cookies в нижней части 
+          страницы. Вы можете:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>Принять все cookies</li>
+          <li>Отклонить необязательные cookies</li>
+          <li>Настроить свои предпочтения</li>
+        </ul>
+        
+        <h3 class="text-xl font-medium text-brand-text mb-4">6.2 Настройки браузера</h3>
+        <p class="text-brand-text opacity-80 mb-4">
+          Вы также можете управлять cookies через настройки вашего браузера:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li><strong>Chrome:</strong> Настройки > Конфиденциальность и безопасность > Cookies и другие данные сайтов</li>
+          <li><strong>Firefox:</strong> Настройки > Конфиденциальность и безопасность > Cookies и данные сайтов</li>
+          <li><strong>Safari:</strong> Настройки > Конфиденциальность > Управление данными веб-сайтов</li>
+          <li><strong>Edge:</strong> Настройки > Cookies и разрешения сайтов</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">7. Влияние отключения cookies</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Если вы решите отключить cookies, некоторые функции нашего веб-сайта могут работать некорректно. 
+          Необходимые cookies не могут быть отключены, так как они необходимы для работы веб-сайта. 
+          Отключение аналитических или маркетинговых cookies не повлияет на основную функциональность сайта.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">8. Обновления данной политики</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Мы можем время от времени обновлять данную Политику использования cookies, чтобы отразить 
+          изменения в наших практиках или по другим операционным, правовым или регулятивным причинам. 
+          Мы уведомим вас о любых существенных изменениях, обновив дату "Последнее обновление" в верхней части данной политики.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">9. Ваши права</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          В соответствии с применимыми законами о защите данных, вы имеете право:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>Отозвать свое согласие на cookies в любое время</li>
+          <li>Получить доступ к информации о cookies, которые мы используем</li>
+          <li>Запросить удаление данных cookies</li>
+          <li>Возразить против обработки ваших данных через cookies</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">10. Свяжитесь с нами</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Если у вас есть вопросы об использовании нами cookies или данной Политике использования cookies, 
+          пожалуйста, свяжитесь с нами:
+        </p>
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <p class="text-brand-text opacity-80">
+            <strong>Электронная почта:</strong> privacy@dmitrybond.tech<br>
+            <strong>Веб-сайт:</strong> dmitrybond.tech<br>
+            <strong>Тема письма:</strong> Запрос по Политике использования cookies
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

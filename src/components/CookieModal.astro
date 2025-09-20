@@ -1,0 +1,218 @@
+---
+export interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+
+const texts = {
+  en: {
+    title: "Cookie Preferences",
+    essential: "Essential Cookies",
+    essentialDesc: "Required for the website to function properly",
+    analytics: "Analytics Cookies", 
+    analyticsDesc: "Help us understand how visitors interact with our website",
+    marketing: "Marketing Cookies",
+    marketingDesc: "Used to deliver relevant advertisements",
+    save: "Save Preferences",
+    acceptAll: "Accept All"
+  },
+  ru: {
+    title: "Настройки cookies",
+    essential: "Необходимые cookies",
+    essentialDesc: "Требуются для корректной работы веб-сайта",
+    analytics: "Аналитические cookies",
+    analyticsDesc: "Помогают понять, как посетители взаимодействуют с нашим сайтом", 
+    marketing: "Маркетинговые cookies",
+    marketingDesc: "Используются для показа релевантной рекламы",
+    save: "Сохранить настройки",
+    acceptAll: "Принять все"
+  }
+};
+
+const t = texts[locale as keyof typeof texts];
+---
+
+<div id="cookie-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg max-w-md w-full p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-brand-text">{t.title}</h2>
+        <button id="close-cookie-modal" class="text-gray-400 hover:text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <form id="cookie-preferences-form">
+        <!-- Essential Cookies (always enabled) -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-sm font-medium text-brand-text">{t.essential}</label>
+            <input 
+              type="checkbox" 
+              id="essential-cookies" 
+              checked 
+              disabled
+              class="w-4 h-4 text-brand-primary bg-gray-100 border-gray-300 rounded focus:ring-brand-primary"
+            />
+          </div>
+          <p class="text-xs text-gray-600">{t.essentialDesc}</p>
+        </div>
+        
+        <!-- Analytics Cookies -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <label for="analytics-cookies" class="text-sm font-medium text-brand-text">{t.analytics}</label>
+            <input 
+              type="checkbox" 
+              id="analytics-cookies" 
+              class="w-4 h-4 text-brand-primary bg-gray-100 border-gray-300 rounded focus:ring-brand-primary"
+            />
+          </div>
+          <p class="text-xs text-gray-600">{t.analyticsDesc}</p>
+        </div>
+        
+        <!-- Marketing Cookies -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <label for="marketing-cookies" class="text-sm font-medium text-brand-text">{t.marketing}</label>
+            <input 
+              type="checkbox" 
+              id="marketing-cookies" 
+              class="w-4 h-4 text-brand-primary bg-gray-100 border-gray-300 rounded focus:ring-brand-primary"
+            />
+          </div>
+          <p class="text-xs text-gray-600">{t.marketingDesc}</p>
+        </div>
+        
+        <div class="flex gap-3">
+          <button 
+            type="button" 
+            id="save-cookie-preferences"
+            class="flex-1 bg-brand-primary text-white py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            {t.save}
+          </button>
+          <button 
+            type="button" 
+            id="accept-all-modal"
+            class="flex-1 bg-brand-accent text-brand-text py-2 px-4 rounded-lg hover:bg-opacity-80 transition-colors"
+          >
+            {t.acceptAll}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('cookie-modal');
+    const closeBtn = document.getElementById('close-cookie-modal');
+    const saveBtn = document.getElementById('save-cookie-preferences');
+    const acceptAllBtn = document.getElementById('accept-all-modal');
+    const analyticsCheckbox = document.getElementById('analytics-cookies');
+    const marketingCheckbox = document.getElementById('marketing-cookies');
+    
+    // Load existing preferences
+    const existingConsent = localStorage.getItem('cookie-consent');
+    if (existingConsent) {
+      const consent = JSON.parse(existingConsent);
+      analyticsCheckbox.checked = consent.analytics || false;
+      marketingCheckbox.checked = consent.marketing || false;
+    }
+    
+    // Listen for open modal event from cookie bar
+    document.addEventListener('openCookieModal', () => {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    // Close modal
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    
+    closeBtn?.addEventListener('click', closeModal);
+    
+    // Close on backdrop click
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Save preferences
+    saveBtn?.addEventListener('click', () => {
+      const consent = {
+        essential: true,
+        analytics: analyticsCheckbox.checked,
+        marketing: marketingCheckbox.checked,
+        timestamp: new Date().toISOString()
+      };
+      
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      document.cookie = `cookie-consent=customized; expires=${new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toUTCString()}; path=/; SameSite=Lax`;
+      
+      closeModal();
+      
+      // Hide cookie bar
+      const cookieBar = document.getElementById('cookie-bar');
+      if (cookieBar) {
+        cookieBar.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+          cookieBar.style.display = 'none';
+        }, 300);
+      }
+      
+      // Load scripts based on consent
+      loadScripts(consent);
+    });
+    
+    // Accept all from modal
+    acceptAllBtn?.addEventListener('click', () => {
+      const consent = {
+        essential: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString()
+      };
+      
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      document.cookie = `cookie-consent=accepted; expires=${new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toUTCString()}; path=/; SameSite=Lax`;
+      
+      closeModal();
+      
+      // Hide cookie bar
+      const cookieBar = document.getElementById('cookie-bar');
+      if (cookieBar) {
+        cookieBar.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+          cookieBar.style.display = 'none';
+        }, 300);
+      }
+      
+      loadScripts(consent);
+    });
+    
+    function loadScripts(consent) {
+      // Load analytics scripts if consent given
+      if (consent.analytics) {
+        console.log('Loading analytics scripts...');
+        // Example: Google Analytics
+        // gtag('config', 'GA_MEASUREMENT_ID');
+      }
+      
+      // Load marketing scripts if consent given
+      if (consent.marketing) {
+        console.log('Loading marketing scripts...');
+        // Example: Facebook Pixel, Google Ads, etc.
+      }
+    }
+  });
+</script>
+

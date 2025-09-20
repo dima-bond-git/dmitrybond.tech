@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/en/terms';
+const locale = 'en';
+---
+
+<Layout title="Terms of Service - Dmitry Bond" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-text mb-8">
+        Terms of Service
+      </h1>
+      <p class="text-brand-text opacity-70 mb-12">
+        Last updated: December 2024
+      </p>
+      
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">1. Agreement to Terms</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          By accessing and using dmitrybond.tech (the "Service"), you agree to be bound by these 
+          Terms of Service ("Terms"). If you disagree with any part of these terms, then you may 
+          not access the Service.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">2. Description of Service</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Dmitry Bond provides full-stack development services, technical consulting, and related 
+          professional services. The Service includes our website, consultation scheduling, and 
+          communication platforms used for client interactions.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">3. Use License</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Permission is granted to temporarily access the Service for personal, non-commercial 
+          transitory viewing only. This is the grant of a license, not a transfer of title, and 
+          under this license you may not:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>Modify or copy the materials</li>
+          <li>Use the materials for any commercial purpose or for any public display</li>
+          <li>Attempt to reverse engineer any software contained on the Service</li>
+          <li>Remove any copyright or other proprietary notations from the materials</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">4. Professional Services</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          Any professional services provided are subject to separate written agreements that will 
+          specify the scope of work, deliverables, timelines, and compensation. These Terms do not 
+          constitute a service agreement unless explicitly stated otherwise.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">5. User Conduct</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          You agree to use the Service only for lawful purposes and in accordance with these Terms. 
+          You agree not to:
+        </p>
+        <ul class="list-disc list-inside text-brand-text opacity-80 mb-6 space-y-2">
+          <li>Violate any applicable laws or regulations</li>
+          <li>Transmit any harmful or malicious code</li>
+          <li>Interfere with or disrupt the Service or servers</li>
+          <li>Attempt to gain unauthorized access to any portion of the Service</li>
+          <li>Use the Service for any unlawful or prohibited purpose</li>
+        </ul>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">6. Intellectual Property</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          The Service and its original content, features, and functionality are and will remain 
+          the exclusive property of Dmitry Bond and its licensors. The Service is protected by 
+          copyright, trademark, and other laws. Our trademarks may not be used without prior 
+          written consent.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">7. Privacy Policy</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          Your privacy is important to us. Please review our 
+          <a href="/en/privacy" class="text-brand-primary hover:underline">Privacy Policy</a>, 
+          which also governs your use of the Service, to understand our practices.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">8. Disclaimers</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          The information on this Service is provided on an "as is" basis. To the fullest extent 
+          permitted by law, Dmitry Bond excludes all representations, warranties, conditions and 
+          terms relating to our Service and the use of this Service.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">9. Limitations</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          In no event shall Dmitry Bond, nor its directors, employees, partners, agents, suppliers, 
+          or affiliates, be liable for any indirect, incidental, special, consequential, or punitive 
+          damages, including without limitation, loss of profits, data, use, goodwill, or other 
+          intangible losses, resulting from your use of the Service.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">10. Indemnification</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          You agree to defend, indemnify, and hold harmless Dmitry Bond and its licensee and 
+          licensors, and their employees, contractors, agents, officers and directors, from and 
+          against any and all claims, damages, obligations, losses, liabilities, costs or debt, 
+          and expenses (including but not limited to attorney's fees).
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">11. Termination</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We may terminate or suspend your access immediately, without prior notice or liability, 
+          for any reason whatsoever, including without limitation if you breach the Terms.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">12. Governing Law</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          These Terms shall be interpreted and governed by the laws of the jurisdiction in which 
+          Dmitry Bond operates, without regard to its conflict of law provisions.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">13. Changes to Terms</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          We reserve the right, at our sole discretion, to modify or replace these Terms at any 
+          time. If a revision is material, we will try to provide at least 30 days notice prior 
+          to any new terms taking effect.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">14. Severability</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          If any provision of these Terms is held to be invalid or unenforceable by a court, 
+          the remaining provisions of these Terms will remain in effect.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">15. Entire Agreement</h2>
+        <p class="text-brand-text opacity-80 mb-6">
+          These Terms constitute the sole and entire agreement between you and Dmitry Bond regarding 
+          the Service and supersede all prior and contemporaneous understandings, agreements, 
+          representations, and warranties.
+        </p>
+        
+        <h2 class="text-2xl font-semibold text-brand-text mb-6">16. Contact Information</h2>
+        <p class="text-brand-text opacity-80 mb-4">
+          If you have any questions about these Terms of Service, please contact us at:
+        </p>
+        <div class="bg-gray-50 p-6 rounded-lg">
+          <p class="text-brand-text opacity-80">
+            <strong>Email:</strong> legal@dmitrybond.tech<br>
+            <strong>Website:</strong> dmitrybond.tech<br>
+            <strong>Response Time:</strong> We will respond to your inquiry within 5 business days
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

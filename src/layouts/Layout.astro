@@ -1,0 +1,99 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  locale?: string;
+}
+
+const { title, description = "Dmitry Bond - Full-Stack Developer & Technical Consultant", locale = "en" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- hreflang for SEO -->
+    <link rel="alternate" hreflang="en" href="https://dmitrybond.tech/en/" />
+    <link rel="alternate" hreflang="ru" href="https://dmitrybond.tech/ru/" />
+    <link rel="alternate" hreflang="x-default" href="https://dmitrybond.tech/" />
+    
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-brand-background text-brand-text">
+    <header class="bg-white shadow-sm">
+      <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a href={`/${locale}/`} class="text-2xl font-bold text-brand-primary">
+              Dmitry Bond
+            </a>
+          </div>
+          
+          <div class="hidden md:flex space-x-8">
+            <a href={`/${locale}/about`} class="text-brand-text hover:text-brand-primary transition-colors duration-200">
+              {locale === 'en' ? 'About' : 'Обо мне'}
+            </a>
+            <a href={`/${locale}/bookme`} class="btn-primary">
+              {locale === 'en' ? 'Book Me' : 'Записаться'}
+            </a>
+          </div>
+          
+          <div class="flex items-center space-x-4">
+            <slot name="lang-switch" />
+          </div>
+          
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button type="button" class="text-brand-text hover:text-brand-primary">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer locale={locale} />
+    
+    <!-- Cookie consent scripts will be loaded here -->
+    <div id="cookie-consent"></div>
+    
+    <script>
+      // Initialize cookie consent system
+      (function() {
+        const consent = localStorage.getItem('cookie-consent');
+        const consentData = consent ? JSON.parse(consent) : null;
+        
+        // Load analytics only if consent is given
+        if (consentData && consentData.analytics) {
+          // Load analytics scripts here
+          console.log('Analytics consent given');
+        }
+        
+        // Load marketing scripts only if consent is given
+        if (consentData && consentData.marketing) {
+          // Load marketing scripts here
+          console.log('Marketing consent given');
+        }
+      })();
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitch from '../../components/LangSwitch.astro';
+import CookieBar from '../../components/CookieBar.astro';
+import CookieModal from '../../components/CookieModal.astro';
+
+const currentPath = '/en';
+const locale = 'en';
+---
+
+<Layout title="Dmitry Bond - Full-Stack Developer & Technical Consultant" locale={locale}>
+  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+  
+  <!-- Hero Section -->
+  <section class="py-20 bg-gradient-to-br from-brand-background to-brand-accent">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-brand-text mb-6">
+        Dmitry Bond
+      </h1>
+      <p class="text-xl md:text-2xl text-brand-text opacity-80 mb-8">
+        Full-Stack Developer & Technical Consultant
+      </p>
+      <p class="text-lg text-brand-text opacity-70 max-w-3xl mx-auto mb-12">
+        I help businesses build robust, scalable web applications and provide technical consulting services. 
+        From concept to deployment, I deliver solutions that drive growth and innovation.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/en/bookme" class="btn-primary text-lg px-8 py-4">
+          Schedule a Call
+        </a>
+        <a href="/en/about" class="btn-secondary text-lg px-8 py-4">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-text mb-6">
+          What I Do
+        </h2>
+        <p class="text-lg text-brand-text opacity-70 max-w-2xl mx-auto">
+          Comprehensive development and consulting services to help your business succeed in the digital world.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-brand-primary rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-text mb-4">Full-Stack Development</h3>
+          <p class="text-brand-text opacity-70">
+            Modern web applications using React, Node.js, TypeScript, and cloud technologies. 
+            From frontend to backend, I build complete solutions.
+          </p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-brand-primary rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-text mb-4">Technical Consulting</h3>
+          <p class="text-brand-text opacity-70">
+            Strategic guidance on architecture, technology choices, and implementation approaches. 
+            Helping you make informed decisions for your projects.
+          </p>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-brand-primary rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-brand-text mb-4">Cloud & DevOps</h3>
+          <p class="text-brand-text opacity-70">
+            Infrastructure as Code, CI/CD pipelines, containerization, and cloud deployment. 
+            Scalable and reliable solutions for modern applications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-brand-primary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        Ready to Build Something Amazing?
+      </h2>
+      <p class="text-xl text-white opacity-90 mb-8">
+        Let's discuss your project and explore how we can work together to achieve your goals.
+      </p>
+      <a href="/en/bookme" class="bg-white text-brand-primary hover:bg-opacity-90 font-medium py-3 px-8 rounded-lg transition-all duration-200 text-lg">
+        Get Started Today
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<CookieBar locale={locale} />
+<CookieModal locale={locale} />
+

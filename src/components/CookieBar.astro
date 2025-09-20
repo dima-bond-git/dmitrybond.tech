@@ -1,0 +1,145 @@
+---
+export interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+
+const texts = {
+  en: {
+    message: "We use cookies to enhance your experience and analyze website traffic.",
+    acceptAll: "Accept All",
+    rejectAll: "Reject All", 
+    customize: "Customize",
+    learnMore: "Learn more"
+  },
+  ru: {
+    message: "Мы используем cookies для улучшения вашего опыта и анализа трафика веб-сайта.",
+    acceptAll: "Принять все",
+    rejectAll: "Отклонить все",
+    customize: "Настроить", 
+    learnMore: "Подробнее"
+  }
+};
+
+const t = texts[locale as keyof typeof texts];
+---
+
+<div id="cookie-bar" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 transform translate-y-full transition-transform duration-300" style="display: none;">
+  <div class="max-w-6xl mx-auto px-4 py-4">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex-1">
+        <p class="text-sm text-brand-text">
+          {t.message}
+          <a href={`/${locale}/cookies`} class="text-brand-primary hover:underline ml-1">
+            {t.learnMore}
+          </a>
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <button 
+          id="reject-all-cookies" 
+          class="px-4 py-2 text-sm border border-gray-300 text-brand-text hover:bg-gray-50 rounded-lg transition-colors"
+        >
+          {t.rejectAll}
+        </button>
+        <button 
+          id="customize-cookies" 
+          class="px-4 py-2 text-sm border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white rounded-lg transition-colors"
+        >
+          {t.customize}
+        </button>
+        <button 
+          id="accept-all-cookies" 
+          class="px-4 py-2 text-sm bg-brand-primary text-white hover:bg-opacity-90 rounded-lg transition-colors"
+        >
+          {t.acceptAll}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cookieBar = document.getElementById('cookie-bar');
+    const acceptAllBtn = document.getElementById('accept-all-cookies');
+    const rejectAllBtn = document.getElementById('reject-all-cookies');
+    const customizeBtn = document.getElementById('customize-cookies');
+    
+    // Check if consent already exists
+    const existingConsent = localStorage.getItem('cookie-consent');
+    
+    if (!existingConsent) {
+      // Show cookie bar after a short delay
+      setTimeout(() => {
+        cookieBar.style.display = 'block';
+        setTimeout(() => {
+          cookieBar.style.transform = 'translateY(0)';
+        }, 100);
+      }, 1000);
+    }
+    
+    // Accept all cookies
+    acceptAllBtn?.addEventListener('click', () => {
+      const consent = {
+        essential: true,
+        analytics: true,
+        marketing: true,
+        timestamp: new Date().toISOString()
+      };
+      
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      document.cookie = `cookie-consent=accepted; expires=${new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toUTCString()}; path=/; SameSite=Lax`;
+      
+      hideCookieBar();
+      loadScripts(consent);
+    });
+    
+    // Reject all cookies (except essential)
+    rejectAllBtn?.addEventListener('click', () => {
+      const consent = {
+        essential: true,
+        analytics: false,
+        marketing: false,
+        timestamp: new Date().toISOString()
+      };
+      
+      localStorage.setItem('cookie-consent', JSON.stringify(consent));
+      document.cookie = `cookie-consent=rejected; expires=${new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toUTCString()}; path=/; SameSite=Lax`;
+      
+      hideCookieBar();
+    });
+    
+    // Open customize modal
+    customizeBtn?.addEventListener('click', () => {
+      // This will be handled by CookieModal component
+      const event = new CustomEvent('openCookieModal');
+      document.dispatchEvent(event);
+    });
+    
+    function hideCookieBar() {
+      cookieBar.style.transform = 'translateY(100%)';
+      setTimeout(() => {
+        cookieBar.style.display = 'none';
+      }, 300);
+    }
+    
+    function loadScripts(consent) {
+      // Load analytics scripts if consent given
+      if (consent.analytics) {
+        // Example: Google Analytics
+        // gtag('config', 'GA_MEASUREMENT_ID');
+        console.log('Loading analytics scripts...');
+      }
+      
+      // Load marketing scripts if consent given  
+      if (consent.marketing) {
+        // Example: Facebook Pixel, Google Ads, etc.
+        console.log('Loading marketing scripts...');
+      }
+    }
+  });
+</script>
+
