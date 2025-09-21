@@ -95,3 +95,4 @@ echo "   Update services: docker-compose pull && docker-compose up -d"
 echo ""
 echo "🎉 Deployment completed successfully!"
 
+
