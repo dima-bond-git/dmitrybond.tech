@@ -6,7 +6,7 @@ dmitrybond.tech, www.dmitrybond.tech {
   encode zstd gzip
 
   # Статика Astro (смонтируем в /srv/dmb/site)
-  root * /opt/dmb/site
+  root * /srv/dmb/site
   file_server
 
   # Кеш: HTML — не кешировать; ассеты — кешировать надолго
