@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import LangSwitch from '../../components/LangSwitch.astro';
 import CookieBar from '../../components/CookieBar.astro';
 import CookieModal from '../../components/CookieModal.astro';
@@ -8,7 +8,7 @@ const currentPath = '/en/terms';
 const locale = 'en';
 ---
 
-<Layout title="Terms of Service - Dmitry Bond" locale={locale}>
+<SiteLayout title="Terms of Service - Dmitry Bond" locale={locale}>
   <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
   
   <section class="py-20">
@@ -152,9 +152,7 @@ const locale = 'en';
       </div>
     </div>
   </section>
-</Layout>
+</SiteLayout>
 
 <CookieBar locale={locale} />
 <CookieModal locale={locale} />
-
-
