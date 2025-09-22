@@ -1,0 +1,34 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { getCollection } from 'astro:content';
+import { PUBLIC_BLOG_ENABLED } from 'astro:env/client';
+import ru from '../../../i18n/ru.ts';
+
+const locale = 'ru' as const;
+if (!PUBLIC_BLOG_ENABLED) {
+  Astro.redirect(`/${locale}/about`);
+}
+
+const posts = (await getCollection('blog', ({ data }) => data.lang === 'ru' && !data.draft))
+  .sort((a,b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<SiteLayout title={ru.seo.blog.title} description={ru.seo.blog.desc} locale={locale} active="blog">
+  { !PUBLIC_BLOG_ENABLED && <meta name="robots" content="noindex, nofollow" /> }
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl font-semibold mb-6">{ru.nav.blog}</h1>
+      <div class="grid gap-6">
+        {posts.map((p) => (
+          <a href={`/${locale}/blog/${p.slug}`} class="block rounded-xl border border-brand-accent p-5 bg-white hover:shadow-sm">
+            <h3 class="text-lg font-medium">{p.data.title}</h3>
+            {p.data.excerpt && <p class="text-sm text-brand-text/80 mt-1">{p.data.excerpt}</p>}
+            <time class="text-xs opacity-60">{p.data.date.toISOString().slice(0,10)}</time>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+

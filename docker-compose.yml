@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # Caddy reverse proxy with SSL
   caddy:
@@ -9,13 +7,12 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
+      - /opt/dmb/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /opt/dmb/site:/srv/dmb/site:ro
+      - /opt/dmb/certs:/etc/certs:ro
     environment:
       - ACME_AGREE=true
     depends_on:
-      - web
       - cal
 
   # Astro website
@@ -91,5 +88,3 @@ volumes:
 networks:
   default:
     name: dmitrybond-network
-
-

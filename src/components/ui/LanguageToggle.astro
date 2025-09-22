@@ -1,0 +1,20 @@
+---
+export interface Props {
+  currentLocale: 'en' | 'ru';
+  currentPath: string;
+}
+
+const { currentLocale, currentPath } = Astro.props;
+
+const pathWithoutLocale = currentPath.replace(/^\/(en|ru)(?=\/|$)/, '');
+const targetLocale = currentLocale === 'en' ? 'ru' : 'en';
+const targetPath = `/${targetLocale}${pathWithoutLocale || '/about'}`;
+---
+
+<a href={targetPath} aria-label="Switch language" class="px-2 py-1 rounded border border-brand-accent text-sm hover:bg-brand-accent/20">
+  {currentLocale === 'en' ? 'RU' : 'EN'}
+  <span class="sr-only">Switch language</span>
+  
+</a>
+
+

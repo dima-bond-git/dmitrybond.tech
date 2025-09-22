@@ -1,15 +1,13 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import LangSwitch from '../../components/LangSwitch.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import CookieBar from '../../components/CookieBar.astro';
 import CookieModal from '../../components/CookieModal.astro';
 
-const currentPath = '/ru/bookme';
 const locale = 'ru';
+const calOrigin = import.meta.env.PUBLIC_CAL_ORIGIN || 'https://cal.dmitrybond.tech';
 ---
 
-<Layout title="Записаться на встречу - Дмитрий Бонд" locale={locale}>
-  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+<SiteLayout title="Запись на встречу • Дмитрий Бонд" locale={locale} active="bookme">
   
   <!-- Hero Section -->
   <section class="py-20">
@@ -32,16 +30,10 @@ const locale = 'ru';
           Выберите доступное время
         </h2>
         
-        <!-- Cal.com Embed -->
-        <div id="cal-embed" class="min-h-[600px]">
-          <!-- Cal.com embed will be loaded here -->
-          <div class="flex items-center justify-center h-96">
-            <div class="text-center">
-              <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary mx-auto mb-4"></div>
-              <p class="text-brand-text opacity-70">Загрузка календаря...</p>
-            </div>
-          </div>
-        </div>
+        <iframe src={`${calOrigin}/`} title="Cal embed"
+          class="w-full h-[900px] rounded-xl border border-brand-accent"
+          allow="camera; microphone; autoplay; encrypted-media;"
+        ></iframe>
       </div>
     </div>
   </section>
@@ -143,49 +135,7 @@ const locale = 'ru';
       </div>
     </div>
   </section>
-</Layout>
-
-<!-- Cal.com Embed Script -->
-<script>
-  (function (C, A, L) { 
-    let p = function (a, ar) { 
-      a.q.push(ar); 
-    }; 
-    let d = C.document; 
-    C.Cal = C.Cal || function () { 
-      let cal = C.Cal; 
-      let ar = arguments; 
-      if (!cal.loaded) { 
-        cal.ns = {}; 
-        cal.q = cal.q || []; 
-        d.head.appendChild(d.createElement("script")).src = A; 
-        cal.loaded = true; 
-      } 
-      if (ar[0] === L) { 
-        const api = function () { 
-          p(api, arguments); 
-        }; 
-        const namespace = ar[1]; 
-        api.q = api.q || []; 
-        typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar); 
-        return; 
-      } 
-      p(cal, ar); 
-    }; 
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-  
-  Cal("init", "dmitrybond/ru");
-  
-  Cal("ui", {
-    "styles": {
-      "branding": {
-        "brandColor": "#E6974D"
-      }
-    },
-    "hideEventTypeDetails": false,
-    "layout": "month_view"
-  });
-</script>
+</SiteLayout>
 
 <CookieBar locale={locale} />
 <CookieModal locale={locale} />

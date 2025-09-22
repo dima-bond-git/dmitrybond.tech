@@ -1,83 +1,45 @@
 {
-  email you@example.com
-  acme_ca https://acme-v02.api.letsencrypt.org/directory
+  email iam@dmitrybond.tech
 }
 
-# Main domain with SSL
 dmitrybond.tech, www.dmitrybond.tech {
   encode zstd gzip
 
-  # Security headers
-  header {
-    # Enable HSTS
-    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-    
-    # Prevent MIME type sniffing
-    X-Content-Type-Options "nosniff"
-    
-    # Enable XSS protection
-    X-XSS-Protection "1; mode=block"
-    
-    # Prevent clickjacking
-    X-Frame-Options "DENY"
-    
-    # Referrer policy
-    Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Content Security Policy
-    Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://app.cal.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://app.cal.com; frame-src 'self' https://app.cal.com;"
-  }
+  # Статика Astro (смонтируем в /srv/dmb/site)
+  root * /srv/dmb/site
+  file_server
 
-  # Proxy Cal.com booking pages
+  # Кеш: HTML — не кешировать; ассеты — кешировать надолго
+  @html path *.html
+  header @html Cache-Control "no-cache, no-store, must-revalidate"
+  header /_astro/* Cache-Control "public, max-age=31536000, immutable"
+  header /assets/*  Cache-Control "public, max-age=31536000, immutable"
+
+  # Редирект с корня на английскую версию
+  @root path /
+  redir @root /en/ 302
+
+  # Прокси только для Cal
   handle_path /en/bookme* {
-    reverse_proxy cal:3000 {
-      header_up Host {host}
-      header_up X-Real-IP {remote}
-      header_up X-Forwarded-For {remote}
-      header_up X-Forwarded-Proto {scheme}
-    }
+    reverse_proxy cal:3000
   }
-
   handle_path /ru/bookme* {
-    reverse_proxy cal:3000 {
-      header_up Host {host}
-      header_up X-Real-IP {remote}
-      header_up X-Forwarded-For {remote}
-      header_up X-Forwarded-Proto {scheme}
-    }
+    reverse_proxy cal:3000
   }
 
-  # Proxy all other requests to Astro site
-  reverse_proxy web:3000 {
-    header_up Host {host}
-    header_up X-Real-IP {remote}
-    header_up X-Forwarded-For {remote}
-    header_up X-Forwarded-Proto {scheme}
-  }
+  tls /etc/certs/cf-origin.pem /etc/certs/cf-origin.key
 
-  # Custom error pages
+  # Кастомные ошибки (если файлы есть в /srv/dmb/site)
   handle_errors {
-    @404 {
-      expression {http.error.status_code} == 404
-    }
+    @404 expression {http.error.status_code} == 404
     handle @404 {
       rewrite * /404.html
       file_server
     }
-    
-    @500 {
-      expression {http.error.status_code} >= 500
-    }
-    handle @500 {
+    @5xx expression {http.error.status_code} >= 500
+    handle @5xx {
       rewrite * /500.html
       file_server
     }
   }
 }
-
-# Redirect www to non-www (handled by the main block above)
-# www.dmitrybond.tech {
-#   redir https://dmitrybond.tech{uri} permanent
-# }
-
-

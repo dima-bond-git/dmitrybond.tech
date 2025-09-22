@@ -1,0 +1,74 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ru from '../../../i18n/ru.ts';
+
+const locale = 'ru' as const;
+const t = ru;
+---
+
+<SiteLayout title={t.seo.cv.title} description={t.seo.cv.desc} locale={locale} active="cv">
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">{t.cv.heroTitle}</h1>
+      <p class="text-brand-text/80 mb-6">{t.about.sub}</p>
+      <a href={`/files/cv/dmitry-bondarenko-${locale}.pdf`} class="inline-flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-xl">
+        {t.cv.download}
+      </a>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-semibold mb-4">Навыки</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-medium mb-2">Облако</h3>
+          <div class="flex flex-wrap gap-2">
+            {t.cv.skills.cloud.map((s) => <span class="px-3 py-1 rounded-full bg-brand-accent/40">{s}</span>)}
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium mb-2">DevOps</h3>
+          <div class="flex flex-wrap gap-2">
+            {t.cv.skills.devops.map((s) => <span class="px-3 py-1 rounded-full bg-brand-accent/40">{s}</span>)}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-semibold mb-6">Опыт</h2>
+      <div class="grid gap-6">
+        {t.cv.experience.map((e) => (
+          <div class="rounded-xl border border-brand-accent bg-white p-6">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-lg font-medium">{e.company} — {e.role}</h3>
+              <span class="text-sm opacity-70">{e.period}</span>
+            </div>
+            <ul class="list-disc pl-6 space-y-1 text-brand-text/80">
+              {e.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-2xl font-semibold mb-6">Проекты</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {t.cv.projects.map((p) => (
+          <a href={p.link} class="block rounded-xl border border-brand-accent p-5 hover:shadow-sm">
+            <h3 class="font-medium mb-2">{p.title}</h3>
+            <p class="text-sm text-brand-text/80">{p.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</SiteLayout>
+
+

@@ -1,15 +1,11 @@
----
-import Layout from '../../layouts/Layout.astro';
-import LangSwitch from '../../components/LangSwitch.astro';
+import SiteLayout from '../../layouts/SiteLayout.astro';
 import CookieBar from '../../components/CookieBar.astro';
 import CookieModal from '../../components/CookieModal.astro';
 
-const currentPath = '/ru/about';
 const locale = 'ru';
 ---
 
-<Layout title="Обо мне - Дмитрий Бонд" locale={locale}>
-  <LangSwitch slot="lang-switch" currentLocale={locale} currentPath={currentPath} />
+<SiteLayout title="Обо мне • Дмитрий Бонд" locale={locale} active="about">
   
   <!-- Hero Section -->
   <section class="py-20">
@@ -154,7 +150,7 @@ const locale = 'ru';
       </a>
     </div>
   </section>
-</Layout>
+</SiteLayout>
 
 <CookieBar locale={locale} />
 <CookieModal locale={locale} />

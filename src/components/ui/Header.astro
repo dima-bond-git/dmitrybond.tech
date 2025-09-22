@@ -1,0 +1,36 @@
+---
+import LanguageToggle from "./LanguageToggle.astro";
+
+export interface Props {
+  locale: 'en' | 'ru';
+  active?: 'about' | 'bookme' | 'blog' | 'cv';
+}
+
+const { locale, active } = Astro.props;
+
+const t = (key: string) => {
+  const map: Record<string, Record<string, string>> = {
+    en: { about: 'About me', bookme: 'Book me', blog: 'My blog', cv: 'CV' },
+    ru: { about: 'Обо мне', bookme: 'Записаться', blog: 'Мысли', cv: 'CV' },
+  };
+  const [section] = key.split('.')
+  return map[locale][section] || key;
+}
+---
+
+<header class="bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 sticky top-0 z-40 border-b">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href={`/${locale}/about`} class="text-xl font-semibold text-brand-primary">Dmitry Bond</a>
+      <div class="flex items-center gap-6">
+        <a href={`/${locale}/about`} class={`hover:text-brand-primary ${active==='about'?'text-brand-primary font-semibold':''}`}>{t('about')}</a>
+        <a href={`/${locale}/bookme`} class={`hover:text-brand-primary ${active==='bookme'?'text-brand-primary font-semibold':''}`}>{t('bookme')}</a>
+        <!-- Blog link will be conditionally shown in M2 via env flag at page-level -->
+        <a href={`/${locale}/cv`} class={`hover:text-brand-primary ${active==='cv'?'text-brand-primary font-semibold':''}`}>{t('cv')}</a>
+        <LanguageToggle currentLocale={locale} currentPath={Astro.url.pathname} />
+      </div>
+    </div>
+  </nav>
+</header>
+
+
