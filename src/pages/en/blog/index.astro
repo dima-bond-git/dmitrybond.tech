@@ -1,7 +1,9 @@
 ---
+const BLOG_ENABLED = import.meta.env.PUBLIC_BLOG_ENABLED === 'true';
+---
+
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import { getCollection } from 'astro:content';
-import { PUBLIC_BLOG_ENABLED } from 'astro:env/client';
 import en from '../../../i18n/en.ts';
 
 const locale = 'en' as const;
