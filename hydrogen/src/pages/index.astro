@@ -1,0 +1,70 @@
+---
+import ImageMod from "@/components/ImageMod.astro";
+import Pagination from "@/components/Pagination.astro";
+import Post from "@/components/Post.astro";
+import Social from "@/components/Social.astro";
+import config from "@/config/config.json";
+import social from "@/config/social.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { sortByDate } from "@/lib/utils/sortFunctions";
+import { markdownify } from "@/lib/utils/textConverter";
+
+const posts = await getSinglePage("posts");
+const { pagination } = config.settings;
+const { name, image, designation, bio } = config.profile;
+const sortPostByDate = sortByDate(posts);
+---
+
+<Base>
+  {/* profile */}
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto text-center lg:col-8">
+          <ImageMod
+            class="mx-auto rounded-full"
+            src={image}
+            width={220}
+            height={220}
+            alt={name}
+            loading="eager"
+          />
+          <h1
+            set:html={markdownify(name)}
+            class="mt-12 text-6xl lg:text-8xl font-semibold"
+          />
+          <p
+            set:html={markdownify(designation)}
+            class="mt-6 text-primary text-xl"
+          />
+          <p set:html={markdownify(bio)} class="mt-4 leading-9 text-xl" />
+          <Social source={social.main} className="social-icons mt-8" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* posts */}
+  <div class="pt-4">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto lg:col-10">
+          <div class="row g-4">
+            {
+              sortPostByDate
+                .slice(0, pagination)
+                .map((post) => <Post className="col-12 sm:col-6" post={post} />)
+            }
+          </div>
+        </div>
+      </div>
+      <div class="mt-12">
+        <Pagination
+          totalPages={Math.ceil(posts.length / pagination)}
+          currentPage={1}
+        />
+      </div>
+    </div>
+  </div>
+</Base>

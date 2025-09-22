@@ -11,9 +11,10 @@ const t = en;
     <div class="max-w-5xl mx-auto px-4">
       <h1 class="text-4xl font-bold mb-4">{t.cv.heroTitle}</h1>
       <p class="text-brand-text/80 mb-6">{t.about.sub}</p>
-      <a href={`/files/cv/dmitry-bondarenko-${locale}.pdf`} class="inline-flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-xl">
-        {t.cv.download}
-      </a>
+      <div class="flex gap-3">
+        <a href="/files/cv/dmitry-bondarenko-en.pdf" class="inline-flex items-center gap-2 bg-brand-primary text-white px-5 py-3 rounded-xl">Download EN</a>
+        <a href="/files/cv/dmitry-bondarenko-ru.pdf" class="inline-flex items-center gap-2 bg-brand-accent text-brand-text px-5 py-3 rounded-xl">Download RU</a>
+      </div>
     </div>
   </section>
 

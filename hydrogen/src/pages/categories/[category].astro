@@ -1,0 +1,43 @@
+---
+import Post from "@/components/Post.astro";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { getTaxonomy } from "@/lib/taxonomyParser.astro";
+import taxonomyFilter from "@/lib/utils/taxonomyFilter";
+
+// get static paths for all categories
+export async function getStaticPaths() {
+  const categories = await getTaxonomy("posts", "categories");
+
+  return categories.map((category) => {
+    return {
+      params: { category },
+    };
+  });
+}
+
+const { category } = Astro.params;
+
+// get posts by category
+const posts = await getSinglePage("posts");
+const filterByCategories = taxonomyFilter(posts, "categories", category!);
+---
+
+<Base>
+  <div class="section">
+    <div class="container">
+      <div class="row">
+        <div class="mx-auto lg:col-10">
+          <h1 class="text-center capitalize font-normal">{category}</h1>
+          <div class="row pt-12 gy-4">
+            {
+              filterByCategories.map((post) => (
+                <Post className="sm:col-6" post={post} />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Base>
