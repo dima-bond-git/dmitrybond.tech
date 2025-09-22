@@ -9,11 +9,18 @@ dmitrybond.tech, www.dmitrybond.tech {
   root * /srv/dmb/site
   file_server
 
-  # Кеш: HTML — не кешировать; ассеты — кешировать надолго
-  @html path *.html
-  header @html Cache-Control "no-cache, no-store, must-revalidate"
-  header /_astro/* Cache-Control "public, max-age=31536000, immutable"
-  header /assets/*  Cache-Control "public, max-age=31536000, immutable"
+# HTML — не кэшируем (браузер/CF всегда валидируют заново)
+@html {
+  path *.html
+}
+header @html Cache-Control "no-cache"
+
+# Хэшированные ассеты — кэшируем надолго
+@assets {
+  path /_astro/* *.css *.js *.svg *.woff2
+}
+header @assets Cache-Control "public, max-age=31536000, immutable"
+
 
   # Редирект с корня на английскую версию
   @root path /
