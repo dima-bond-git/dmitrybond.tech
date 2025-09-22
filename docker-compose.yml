@@ -7,7 +7,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /opt/dmb/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /opt/dmb/caddy:/etc/caddy:ro        # <— МОНТИРУЕМ КАТАЛОГ
       - /opt/dmb/site:/srv/dmb/site:ro
       - /opt/dmb/certs:/etc/certs:ro
     environment:
