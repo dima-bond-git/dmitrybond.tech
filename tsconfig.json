@@ -5,6 +5,13 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
+      "hydrogen/*": ["hydrogen/*"],
+      "@hydrogen/core": ["hydrogen/core.ts"],
+      "@hydrogen/storefront": ["hydrogen/storefront.ts"],
+      "@hydrogen/utils": ["hydrogen/utils.ts"],
+      "@hydrogen/client": ["hydrogen/client.ts"],
+      "@hydrogen/storefront-api": ["hydrogen/storefront-api.ts"],
+      "@hydrogen/storefront-api-client": ["hydrogen/storefront-api-client.ts"],
       "@/*": ["src/*"]
     },
     "types": ["astro/client"]

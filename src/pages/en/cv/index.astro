@@ -6,6 +6,12 @@ const locale = 'en' as const;
 const t = en;
 ---
 
+layout: ../../../layouts/BaseBridge.astro
+lang: 'en'
+title: 'CV'
+
+---
+
 <SiteLayout title={t.seo.cv.title} description={t.seo.cv.desc} locale={locale} active="cv">
   <section class="py-16">
     <div class="max-w-5xl mx-auto px-4">

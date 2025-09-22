@@ -7,7 +7,13 @@ const locale = 'ru';
 const calOrigin = import.meta.env.PUBLIC_CAL_ORIGIN || 'https://cal.dmitrybond.tech';
 ---
 
-<SiteLayout title="Запись на встречу • Дмитрий Бонд" locale={locale} active="bookme">
+layout: ../../../layouts/BaseBridge.astro
+lang: 'ru'
+title: 'Запись на встречу'
+
+---
+
+<SiteLayout title="Запись на встречу" locale={locale} active="bookme">
   
   <!-- Hero Section -->
   <section class="py-20">

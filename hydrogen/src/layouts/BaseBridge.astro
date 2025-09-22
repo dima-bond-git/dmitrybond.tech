@@ -1,0 +1,9 @@
+---
+import HydrogenBase from 'hydrogen/src/layouts/Base.astro';
+import Header from '../components/Header.astro';
+const { lang = 'en', title = 'Dmitry Bondarenko', description = '' } = Astro.props;
+---
+<HydrogenBase {title} {description}>
+  <Header lang={lang} />
+  <slot />
+</HydrogenBase>
